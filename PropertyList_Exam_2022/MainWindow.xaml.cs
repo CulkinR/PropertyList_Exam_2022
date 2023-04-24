@@ -30,6 +30,11 @@ namespace PropertyList_Exam_2022
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            ReadFromDb();
+        }
+
+        private void ReadFromDb()
+        {
             var query = from rentals in db.RentalProperties
                         select rentals;
 
@@ -50,6 +55,7 @@ namespace PropertyList_Exam_2022
 
             addPropertyWindow.Owner = this;
             addPropertyWindow.ShowDialog();
+            ReadFromDb();
         }
     }
 }

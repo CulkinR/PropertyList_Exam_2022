@@ -10,7 +10,7 @@ namespace PropertyList_Exam_2022
     public enum RentalType { 
         House, 
         Flat, 
-        Share 
+        Share
     }
     public class RentalProperty
     {

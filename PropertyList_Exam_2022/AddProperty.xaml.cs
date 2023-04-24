@@ -27,17 +27,34 @@ namespace PropertyList_Exam_2022
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             RentalProperty rentalProperties = new RentalProperty();
-            var test = Enum.GetValues(typeof(RentalType));
-            cbx_rentalType.ItemsSource = Enum.GetValues(typeof(RentalType));
+            cbx_rentalType.ItemsSource = Enum.GetNames(typeof(RentalType));
         }
 
         private void btn_saveData_Click(object sender, RoutedEventArgs e)
         {
+            
             var mainWindow = Owner as MainWindow;
 
-            
+            int rentalType = cbx_rentalType.SelectedIndex;
+            string location = tbx_location.Text;
+            string desciption = tbx_description.Text;
+            decimal price = Convert.ToDecimal(tbx_price.Text);
 
+            using (RentalPropertyData db = new RentalPropertyData())
+            {
+                RentalProperty rentalProperty = new RentalProperty()
+                {
+                    location = location,
+                    price = price,
+                    description = desciption,
+                    RentalType = (RentalType)rentalType
+                };
 
+                db.RentalProperties.Add(rentalProperty);
+                db.SaveChanges();
+            }
+
+            Close();
 
         }
 
