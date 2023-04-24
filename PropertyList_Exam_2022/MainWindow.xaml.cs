@@ -33,7 +33,7 @@ namespace PropertyList_Exam_2022
             var query = from rentals in db.RentalProperties
                         select rentals;
 
-        
+
             lbx_propertyListing.ItemsSource = query.ToList();
         }
 
@@ -42,6 +42,14 @@ namespace PropertyList_Exam_2022
             var selectedProperty = lbx_propertyListing.SelectedItem as RentalProperty;
 
             tbk_propertyDescription.Text = selectedProperty.description;
+        }
+
+        private void btn_addProperty_Click(object sender, RoutedEventArgs e)
+        {
+            var addPropertyWindow = new AddProperty();
+
+            addPropertyWindow.Owner = this;
+            addPropertyWindow.ShowDialog();
         }
     }
 }

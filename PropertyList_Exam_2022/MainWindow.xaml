@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PropertyList_Exam_2022"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <DataTemplate x:Key="propertyListingTemplate">
             <StackPanel Orientation="Horizontal">
@@ -36,8 +36,8 @@
 
         <!--Property Description-->
         <TextBlock x:Name="tbk_propertyDescription" Grid.Row="1" Grid.Column="1" Margin="25" TextWrapping="Wrap"/>
-        
+
         <!--Add Property button-->
-        <Button x:Name="btn_addProperty" Grid.Column="2" Grid.Row="1" Content="Add" VerticalAlignment="Top" Margin="25"/>
+        <Button x:Name="btn_addProperty" Grid.Column="2" Grid.Row="1" Content="Add" VerticalAlignment="Top" Margin="25" Click="btn_addProperty_Click"/>
     </Grid>
 </Window>
