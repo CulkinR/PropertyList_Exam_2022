@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PropertyList_Exam_2022;
 
 namespace PropertyList_Exam_2022
 {
@@ -20,9 +21,27 @@ namespace PropertyList_Exam_2022
     /// </summary>
     public partial class MainWindow : Window
     {
+        RentalPropertyData db = new RentalPropertyData();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var query = from rentals in db.RentalProperties
+                        select rentals;
+
+        
+            lbx_propertyListing.ItemsSource = query.ToList();
+        }
+
+        private void lbx_propertyListing_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedProperty = lbx_propertyListing.SelectedItem as RentalProperty;
+
+            tbk_propertyDescription.Text = selectedProperty.description;
         }
     }
 }
